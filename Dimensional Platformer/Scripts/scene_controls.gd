@@ -1,8 +1,6 @@
 extends Node2D
 
 
-var is_light_dimension = true
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -25,11 +23,15 @@ func _process(delta):
 		get_tree().quit()
 	
 	if Input.is_action_just_pressed("toggle_dimension"):
-		if is_light_dimension: # change to dark dimension
+		if Globals.is_light_dimension: # change to dark dimension
 			get_node("Light Dimension").hide()
+			get_node("Light Dimension/LightDimensionPlayer").hide()
 			get_node("Dark Dimension").show()
+			get_node("Dark Dimension/DarkDimensionPlayer").show()
 		else: # change to light dimension
 			get_node("Dark Dimension").hide()
+			get_node("Dark Dimension/DarkDimensionPlayer").hide()
 			get_node("Light Dimension").show()
+			get_node("Light Dimension/LightDimensionPlayer").show()
 		
-		is_light_dimension = !is_light_dimension
+		Globals.is_light_dimension = !Globals.is_light_dimension
