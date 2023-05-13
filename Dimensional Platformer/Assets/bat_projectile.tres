@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://df2hy10aimdde"]
+
+[ext_resource type="Texture2D" uid="uid://c1y0htergrbg5" path="res://Assets/bat_projectile.png" id="1_p11ie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ew7r"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6t7l"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3itvw"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcej1"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfwam"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbji1"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgu7i"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgl46"]
+atlas = ExtResource("1_p11ie")
+region = Rect2(96, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ew7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6t7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3itvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcej1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfwam")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbji1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgu7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgl46")
+}],
+"loop": true,
+"name": &"main",
+"speed": 9.0
+}]

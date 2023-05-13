@@ -19,22 +19,15 @@ shape = SubResource("CircleShape2D_gl8lb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_wodtd")
-animation = &"falling"
+animation = &"attack"
 autoplay = "fly_right"
-
-[node name="Button" type="Button" parent="."]
-visible = false
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 24.0
-offset_bottom = 22.0
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_gl8lb")
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="Button" to="." method="hit"]

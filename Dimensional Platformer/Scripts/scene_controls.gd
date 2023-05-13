@@ -25,13 +25,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("toggle_dimension"):
 		if Globals.is_light_dimension: # change to dark dimension
 			get_node("Light Dimension").hide()
-			get_node("Light Dimension/LightDimensionPlayer").hide()
+			get_node("Light Dimension/Player").hide()
+			get_node("LightParallax").hide()
 			get_node("Dark Dimension").show()
-			get_node("Dark Dimension/DarkDimensionPlayer").show()
+			get_node("Dark Dimension/Player").show()
+			get_node("DarkParallax").show()
 		else: # change to light dimension
 			get_node("Dark Dimension").hide()
-			get_node("Dark Dimension/DarkDimensionPlayer").hide()
+			get_node("Dark Dimension/Player").hide()
+			get_node("DarkParallax").hide()
 			get_node("Light Dimension").show()
-			get_node("Light Dimension/LightDimensionPlayer").show()
+			get_node("Light Dimension/Player").show()
+			get_node("LightParallax").show()
 		
 		Globals.is_light_dimension = !Globals.is_light_dimension

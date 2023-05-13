@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=33 format=3 uid="uid://bhatxv05uqrkp"]
+[gd_resource type="SpriteFrames" load_steps=32 format=3 uid="uid://bhatxv05uqrkp"]
 
 [ext_resource type="Texture2D" uid="uid://4om28bicu3ld" path="res://Assets/bat_death.png" id="1_s76is"]
 [ext_resource type="Texture2D" uid="uid://drucearan68fh" path="res://Assets/bat_flight.png" id="1_wy6vn"]
@@ -50,19 +50,15 @@ region = Rect2(300, 0, 150, 150)
 atlas = ExtResource("1_s76is")
 region = Rect2(450, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndb4f"]
-atlas = ExtResource("3_xasx0")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl46m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_saw2e"]
 atlas = ExtResource("3_xasx0")
 region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j1se8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_24x1h"]
 atlas = ExtResource("3_xasx0")
 region = Rect2(300, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fr0i2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wf6n"]
 atlas = ExtResource("3_xasx0")
 region = Rect2(450, 0, 150, 150)
 
@@ -135,7 +131,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6db5k")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -146,7 +142,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kk5aj")
 }],
-"loop": true,
+"loop": false,
 "name": &"death1",
 "speed": 5.0
 }, {
@@ -160,24 +156,21 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vf73r")
 }],
-"loop": true,
+"loop": false,
 "name": &"death2",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ndb4f")
+"texture": SubResource("AtlasTexture_saw2e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tl46m")
+"texture": SubResource("AtlasTexture_24x1h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j1se8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fr0i2")
+"texture": SubResource("AtlasTexture_1wf6n")
 }],
-"loop": true,
+"loop": false,
 "name": &"falling",
 "speed": 5.0
 }, {
@@ -206,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rrjeb")
 }],
-"loop": true,
+"loop": false,
 "name": &"fly_right",
 "speed": 15.0
 }, {
@@ -223,7 +216,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8yth5")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 8.0
 }]

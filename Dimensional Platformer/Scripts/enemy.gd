@@ -13,10 +13,7 @@ func _ready():
 	if self.get_parent().get_parent().name == "Light Dimension":
 		selfDim = 'Light'
 		
-	if selfDim == 'Light':
-		self.player = get_node("../../LightDimensionPlayer")
-	if selfDim == 'Dark':
-		self.player = get_node("../../DarkDimensionPlayer")
+	self.player = get_node("../../Player")
 
 func switch_to(new_state):
 	curstate = new_state

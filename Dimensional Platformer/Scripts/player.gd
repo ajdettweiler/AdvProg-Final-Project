@@ -12,21 +12,19 @@ var direction = 0
 
 var anim = null
 
+var health = 10
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	if Globals.is_light_dimension:
-		get_node("../../Light Dimension/Death Zone").connect("body_entered", _on_body_entered_death_zone)
-	else:
-		get_node("../../Dark Dimension/Death Zone").connect("body_entered", _on_body_entered_death_zone)
-	
+	get_node("../Death Zone").connect("body_entered", _on_body_entered_death_zone)
 	anim = $AnimatedSprite2D
 
 func _physics_process(delta):
 	state_timer += delta
 	
-	var is_current_player = (Globals.is_light_dimension and self.name == "LightDimensionPlayer") or (!Globals.is_light_dimension and self.name == "DarkDimensionPlayer")
+	var is_current_player = (Globals.is_light_dimension and get_node("..").name == "Light Dimension") or (!Globals.is_light_dimension and get_node("..").name == "Dark Dimension")
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -47,7 +45,7 @@ func _physics_process(delta):
 	else:
 		direction = 0
 		
-	velocity.x = direction * SPEED	
+	velocity.x = direction * SPEED
 	if direction != 0:
 		if curstate != State.WALKING:
 			switch_to(State.WALKING)
@@ -76,6 +74,13 @@ func switch_to(state):
 			anim.flip_h = true
 		elif direction > 0:
 			anim.flip_h = false
+			
+func hit():
+	health -= 1
+	print(health)
+	if health <= 0:
+		print("ouchie")
+		get_tree().change_scene_to_file("res://Scenes/test_scene.tscn")
 
 func _on_animated_sprite_2d_animation_finished():
 	if curstate == State.JUMPING:

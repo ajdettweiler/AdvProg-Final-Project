@@ -7,8 +7,8 @@ const SPEED = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	light_player = get_node("../Light Dimension").find_child("LightDimensionPlayer", true, false)
-	dark_player = get_node("../Dark Dimension").find_child("DarkDimensionPlayer", true, false)
+	light_player = get_node("../Light Dimension").find_child("Player", true, false)
+	dark_player = get_node("../Dark Dimension").find_child("Player", true, false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

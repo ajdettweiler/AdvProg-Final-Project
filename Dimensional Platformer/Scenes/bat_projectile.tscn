@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdr7vrhcblymq"]
+
+[ext_resource type="Script" path="res://Scripts/bat_projectile.gd" id="1_h8fco"]
+[ext_resource type="SpriteFrames" uid="uid://df2hy10aimdde" path="res://Assets/bat_projectile.tres" id="2_c6axj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j8if"]
+
+[node name="BatProjectile" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_h8fco")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_c6axj")
+animation = &"main"
+autoplay = "main"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_0j8if")
+
+[node name="Area2D" type="Area2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_0j8if")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_anim_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
