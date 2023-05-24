@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://df2hy10aimdde" path="res://Assets/bat_projectile.tres" id="2_c6axj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0j8if"]
+radius = 4.52769
 
 [node name="BatProjectile" type="CharacterBody2D"]
 texture_filter = 1
@@ -14,8 +15,7 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_c6axj")
 animation = &"main"
 autoplay = "main"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.381393
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)

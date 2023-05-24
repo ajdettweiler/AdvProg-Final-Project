@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ca72c00x74ff6"]
+[gd_scene load_steps=17 format=3 uid="uid://ca72c00x74ff6"]
 
 [ext_resource type="Script" path="res://Scripts/scene_controls.gd" id="1_4f2kc"]
 [ext_resource type="PackedScene" uid="uid://cak1nalcv3y7j" path="res://Scenes/player.tscn" id="1_rbhlm"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cdr7vrhcblymq" path="res://Scenes/bat_projectile.tscn" id="6_a7y0p"]
 [ext_resource type="Texture2D" uid="uid://enx8crrpubmf" path="res://Assets/mountains_5.png" id="6_t24ic"]
 [ext_resource type="Texture2D" uid="uid://ckaae7upx0o1m" path="res://Assets/mountains_4.png" id="7_cxts3"]
+[ext_resource type="PackedScene" uid="uid://bkjdj714wi0ri" path="res://Scenes/skelly.tscn" id="7_niihf"]
 [ext_resource type="Texture2D" uid="uid://d2xwxk2g8r6ib" path="res://Assets/mountains_2.png" id="8_2ie2d"]
 [ext_resource type="Texture2D" uid="uid://bujsugjiwiiea" path="res://Assets/mountains_3.png" id="9_dxjuw"]
 [ext_resource type="Texture2D" uid="uid://cwenqwgxcr3ia" path="res://Assets/caves_7.png" id="11_jqu68"]
@@ -21,6 +22,7 @@ process_mode = 1
 script = ExtResource("1_4f2kc")
 
 [node name="Light Dimension" type="Node2D" parent="."]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="Light Dimension"]
 texture_filter = 1
@@ -31,6 +33,9 @@ layer_0/tile_data = PackedInt32Array(589829, 458753, 1, 589830, 458753, 1, 58983
 
 [node name="Monsters" type="Node2D" parent="Light Dimension"]
 
+[node name="Flying Bat" parent="Light Dimension/Monsters" instance=ExtResource("3_sv0ft")]
+position = Vector2(472, 9)
+
 [node name="Death Zone" parent="Light Dimension" instance=ExtResource("4_t73ac")]
 position = Vector2(513, 886)
 scale = Vector2(20, 1)
@@ -38,7 +43,6 @@ scale = Vector2(20, 1)
 [node name="Player" parent="Light Dimension" instance=ExtResource("1_rbhlm")]
 
 [node name="Dark Dimension" type="Node2D" parent="."]
-visible = false
 
 [node name="TileMap" type="TileMap" parent="Dark Dimension"]
 texture_filter = 1
@@ -49,13 +53,17 @@ layer_0/tile_data = PackedInt32Array(589829, 65537, 1, 589830, 65537, 1, 589831,
 
 [node name="Monsters" type="Node2D" parent="Dark Dimension"]
 
-[node name="BatProjectile" parent="Dark Dimension/Monsters" instance=ExtResource("6_a7y0p")]
+[node name="BatProjectile" parent="Dark Dimension/Monsters" node_paths=PackedStringArray("parent") instance=ExtResource("6_a7y0p")]
 position = Vector2(-528, 60)
+parent = NodePath("../Flying Bat")
 
 [node name="Flying Bat" parent="Dark Dimension/Monsters" instance=ExtResource("3_sv0ft")]
 position = Vector2(109, 135)
 collision_layer = 2
 collision_mask = 2
+
+[node name="Skelly" parent="Dark Dimension/Monsters" instance=ExtResource("7_niihf")]
+position = Vector2(380, 4)
 
 [node name="Death Zone" parent="Dark Dimension" instance=ExtResource("4_t73ac")]
 position = Vector2(513, 886)
@@ -72,6 +80,7 @@ position_smoothing_enabled = true
 script = ExtResource("6_500r6")
 
 [node name="LightParallax" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="LightParallax"]
 texture_filter = 1
@@ -110,7 +119,6 @@ scale = Vector2(6, 6)
 texture = ExtResource("8_2ie2d")
 
 [node name="DarkParallax" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="DarkParallax"]
 texture_filter = 1

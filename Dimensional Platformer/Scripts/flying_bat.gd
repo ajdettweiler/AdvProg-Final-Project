@@ -2,7 +2,8 @@ extends "res://Scripts/enemy.gd"
 
 const SPEED = 100
 const FALL_SPEED = 200
-const sight_dist = 500
+const SIGHT_DIST = 500
+const PROJ_OFFSET = 50
 
 var proj = preload("res://Scenes/bat_projectile.tscn")
 var direction = 1
@@ -10,6 +11,19 @@ var direction = 1
 const DEATH_STATES = [State.DYING, State.DEAD, State.FALLING]
 
 var mouse_over = false
+
+func _ready():
+	super()
+	if selfDim == "Light": # set collision layers and masks
+		self.set_collision_layer_value(1, true)
+		self.set_collision_mask_value(1, true)
+		self.set_collision_layer_value(2, false)
+		self.set_collision_mask_value(2, false)
+	else:
+		self.set_collision_layer_value(1, false)
+		self.set_collision_mask_value(1, false)
+		self.set_collision_layer_value(2, true)
+		self.set_collision_mask_value(2, true)
 
 func _physics_process(delta):
 	state_timer += delta
@@ -31,7 +45,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("interact"):
 		shoot_projectile()
 	
-	if abs(direction) < sight_dist and curstate not in DEATH_STATES: # the bat can see the player
+	if abs(direction) < SIGHT_DIST and curstate not in DEATH_STATES: # the bat can see the player
 		if curstate == State.IDLE:
 			switch_to(State.MOVING) # start to move
 		if abs(direction) > 100: # prevent jittery movement
@@ -72,7 +86,8 @@ func hit():
 
 func shoot_projectile():
 	var instance = proj.instantiate()
-	instance.set_dir(-1 if direction < 0 else 1)
+	instance.set_vars(-1 if direction < 0 else 1, self)
+	instance.position = self.position + Vector2(-PROJ_OFFSET if direction < 0 else PROJ_OFFSET, 0)
 	self.get_parent().add_child(instance)
 
 func _on_animated_sprite_2d_animation_finished():

@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dggjwehttrd4"]
+
+[ext_resource type="Texture2D" uid="uid://b6oidybjk5lot" path="res://Assets/portal_particle.png" id="1_dfqit"]
+[ext_resource type="Texture2D" uid="uid://d2sxwcqmuugni" path="res://Assets/portal.png" id="1_sxfhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kar6a"]
+atlas = ExtResource("1_sxfhq")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3kw4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kar6a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1j65o"]
+offsets = PackedFloat32Array(0, 0.511111, 1)
+colors = PackedColorArray(0.879706, 0.931385, 0.956389, 1, 0.872877, 0.910983, 0.976425, 1, 0.80907, 0.897273, 0.957714, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fmwqp"]
+gradient = SubResource("Gradient_1j65o")
+
+[sub_resource type="Curve" id="Curve_46upm"]
+_data = [Vector2(0.0060241, 0.145455), 0.0, 1.10667, 0, 0, Vector2(0.457831, 0.9), -0.0443853, 0.660227, 0, 0, Vector2(1, 0.0272727), -2.45228, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_51eol"]
+curve = SubResource("Curve_46upm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3g2mu"]
+emission_shape = 2
+emission_sphere_radius = 30.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -25.0
+initial_velocity_max = 25.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -40.0
+linear_accel_max = 33.68
+angle_min = -10.0
+angle_max = 10.0
+scale_min = 0.5
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_51eol")
+color = Color(0.92549, 0.960784, 1, 1)
+color_ramp = SubResource("GradientTexture1D_fmwqp")
+sub_emitter_keep_velocity = true
+attractor_interaction_enabled = false
+
+[node name="Portal" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3kw4y")
+
+[node name="Portal Particles" type="GPUParticles2D" parent="."]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_3g2mu")
+texture = ExtResource("1_dfqit")
+lifetime = 3.0
+randomness = 0.34

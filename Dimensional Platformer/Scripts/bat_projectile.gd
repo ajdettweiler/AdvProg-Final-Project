@@ -5,6 +5,8 @@ const SPEED = 200
 enum State{FLYING, EXPLODING}
 var curstate = State.FLYING
 var dir = 1
+@export
+var parent:Node2D
 
 var player:Node2D
 
@@ -22,8 +24,14 @@ func _ready():
 		self.set_collision_layer_value(2, true)
 		self.set_collision_mask_value(2, true)
 
-func set_dir(dir_):
+func set_vars(dir_, parent_):
 	dir = dir_
+	if dir < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
+		
+	parent = parent_
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,9 +51,8 @@ func switch_to(new_state):
 func _on_body_entered(body):
 	if body == player:
 		player.hit()
-		switch_to(State.EXPLODING)
-	elif body != $CollisionShape2D and body != $Area2D and body != self: # not colliding with self
-		print("gone ", body.name)
+	if body != parent and body != self: # not colliding with self or parent
+		print("gone " + body.name)
 		switch_to(State.EXPLODING)
 	
 func _anim_finished():

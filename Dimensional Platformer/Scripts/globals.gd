@@ -1,4 +1,4 @@
 extends Node
 
-var is_light_dimension = true
+var is_light_dimension = false
 
