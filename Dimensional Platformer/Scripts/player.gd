@@ -13,6 +13,7 @@ var direction = 0
 var anim = null
 
 var health = 10
+var is_current_player = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -20,11 +21,25 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	get_node("../Death Zone").connect("body_entered", _on_body_entered_death_zone)
 	anim = $AnimatedSprite2D
+	
+	is_current_player = (Globals.is_light_dimension and get_node("..").name == "Light Dimension") or ((not Globals.is_light_dimension) and get_node("..").name == "Dark Dimension")
+	
+	
+	if get_node("..").name == "Light Dimension": # set collision layers and masks
+		self.set_collision_layer_value(1, true)
+		self.set_collision_mask_value(1, true)
+		self.set_collision_layer_value(2, false)
+		self.set_collision_mask_value(2, false)
+	elif get_node("..").name == "Dark Dimension":
+		self.set_collision_layer_value(1, false)
+		self.set_collision_mask_value(1, false)
+		self.set_collision_layer_value(2, true)
+		self.set_collision_mask_value(2, true)
 
 func _physics_process(delta):
 	state_timer += delta
 	
-	var is_current_player = (Globals.is_light_dimension and get_node("..").name == "Light Dimension") or (!Globals.is_light_dimension and get_node("..").name == "Dark Dimension")
+	is_current_player = (Globals.is_light_dimension and get_node("..").name == "Light Dimension") or (!Globals.is_light_dimension and get_node("..").name == "Dark Dimension")
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -80,17 +95,21 @@ func hit():
 	print(health)
 	if health <= 0:
 		print("ouchie")
-		get_tree().change_scene_to_file("res://Scenes/test_scene.tscn")
+		get_tree().change_scene_to_file(get_node("../..").cur_scene_path)
+		Globals.is_light_dimension = false
 
 func _on_animated_sprite_2d_animation_finished():
 	if curstate == State.JUMPING:
 		switch_to(State.IDLE)
 		
+func _on_collision(body):
+	print(body.name)
+		
 			
 func _on_body_entered_death_zone(body):
 	if body == self:
-		get_tree().change_scene_to_file('res://Scenes/test_scene.tscn')
-		Globals.is_light_dimension = true
+		get_tree().change_scene_to_file(get_node("../..").cur_scene_path)
+		Globals.is_light_dimension = false
 		print("ouchie")
 		
 		

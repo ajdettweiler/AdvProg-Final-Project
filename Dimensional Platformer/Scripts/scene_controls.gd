@@ -1,5 +1,9 @@
 extends Node2D
 
+@export
+var cur_scene_path = "res://Scenes/__.tscn"
+@export
+var next_scene_path = "res://Scenes/__.tscn"	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
