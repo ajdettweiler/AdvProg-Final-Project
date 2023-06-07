@@ -8,21 +8,13 @@ var dir = 1
 @export
 var parent:Node2D
 
-var player:Node2D
+var light_player:Node2D
+var dark_player:Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("../../Player") # get the player in the same dimension
-	if get_node("../..").name == "Light Dimension": # set collision layers and masks
-		self.set_collision_layer_value(1, true)
-		self.set_collision_mask_value(1, true)
-		self.set_collision_layer_value(2, false)
-		self.set_collision_mask_value(2, false)
-	elif get_node("../..").name == "Dark Dimension":
-		self.set_collision_layer_value(1, false)
-		self.set_collision_mask_value(1, false)
-		self.set_collision_layer_value(2, true)
-		self.set_collision_mask_value(2, true)
+	light_player = get_node("../../../LightPlayer") # get the player in each dimension
+	dark_player = get_node("../../../DarkPlayer")
 
 func set_vars(dir_, parent_):
 	dir = dir_
@@ -49,8 +41,8 @@ func switch_to(new_state):
 		$AnimatedSprite2D.play("destroy")
 
 func _on_body_entered(body):
-	if body == player:
-		player.hit()
+	if body == light_player or body == dark_player:
+		body.hit()
 	if body != parent and body != self: # not colliding with self or parent
 		print("gone " + body.name)
 		switch_to(State.EXPLODING)

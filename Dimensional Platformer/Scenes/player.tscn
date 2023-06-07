@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cak1nalcv3y7j"]
+[gd_scene load_steps=24 format=3 uid="uid://cak1nalcv3y7j"]
 
 [ext_resource type="Texture2D" uid="uid://c7u7u0bh786ng" path="res://Assets/Witchcraft_spr_sheets_V1_0.png" id="1_1i3vt"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s8a4l"]
@@ -6,8 +6,32 @@
 [ext_resource type="Texture2D" uid="uid://dya7ptlop6x7m" path="res://Assets/Witchcraft_spr_1.png" id="3_ga4tu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbcyf"]
-radius = 20.0
-height = 64.0
+radius = 13.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4fkp"]
+atlas = ExtResource("3_ga4tu")
+region = Rect2(408, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f5h7"]
+atlas = ExtResource("3_ga4tu")
+region = Rect2(432, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmumx"]
+atlas = ExtResource("3_ga4tu")
+region = Rect2(456, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ixlb"]
+atlas = ExtResource("3_ga4tu")
+region = Rect2(480, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y1t4"]
+atlas = ExtResource("3_ga4tu")
+region = Rect2(408, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuxqy"]
+atlas = ExtResource("3_ga4tu")
+region = Rect2(432, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aiqic"]
 atlas = ExtResource("2_q80do")
@@ -55,6 +79,34 @@ region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hcqla"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4fkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f5h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmumx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ixlb")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y1t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuxqy")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aiqic")
@@ -115,12 +167,7 @@ shape = SubResource("CapsuleShape2D_qbcyf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_hcqla")
-animation = &"jump"
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_qbcyf")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_collision"]
+animation = &"hit"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.594489

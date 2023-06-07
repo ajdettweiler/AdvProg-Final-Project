@@ -1,0 +1,232 @@
+[gd_scene load_steps=17 format=3 uid="uid://i6wta86mw6y7"]
+
+[ext_resource type="Script" path="res://Scripts/scene_controls.gd" id="1_lgcu3"]
+[ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="2_0qlwq"]
+[ext_resource type="PackedScene" uid="uid://cak1nalcv3y7j" path="res://Scenes/player.tscn" id="3_7dnwn"]
+[ext_resource type="Texture2D" uid="uid://enx8crrpubmf" path="res://Assets/mountains_5.png" id="4_rgt4f"]
+[ext_resource type="Texture2D" uid="uid://ckaae7upx0o1m" path="res://Assets/mountains_4.png" id="5_hkpdm"]
+[ext_resource type="Texture2D" uid="uid://bujsugjiwiiea" path="res://Assets/mountains_3.png" id="6_wepqw"]
+[ext_resource type="Texture2D" uid="uid://d2xwxk2g8r6ib" path="res://Assets/mountains_2.png" id="7_qbl3j"]
+[ext_resource type="TileSet" uid="uid://ds6er3ovw63ie" path="res://Assets/main_tileset.tres" id="8_16y48"]
+[ext_resource type="PackedScene" uid="uid://b20g7tt8dkqrn" path="res://Scenes/death_zone.tscn" id="10_j6gtr"]
+[ext_resource type="PackedScene" uid="uid://dggjwehttrd4" path="res://Scenes/portal.tscn" id="11_ol65s"]
+[ext_resource type="Texture2D" uid="uid://cwenqwgxcr3ia" path="res://Assets/caves_7.png" id="13_qwels"]
+[ext_resource type="Texture2D" uid="uid://bjdfmame7hby" path="res://Assets/caves_6.png" id="14_7om37"]
+[ext_resource type="Texture2D" uid="uid://de58iho4yx070" path="res://Assets/caves_5.png" id="15_dhiew"]
+[ext_resource type="Texture2D" uid="uid://dmob8l05vf3he" path="res://Assets/caves_4.png" id="16_nwl63"]
+[ext_resource type="FontFile" uid="uid://vwo27r8yxaxe" path="res://Assets/PublicPixel-z84yD.ttf" id="17_dykh4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq753"]
+font = ExtResource("17_dykh4")
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_lgcu3")
+cur_scene_path = "res://Scenes/level_3.tscn"
+start_light_dim = true
+next_scene_path = "res://Scenes/level_4.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("2_0qlwq")
+
+[node name="LightPlayer" parent="." instance=ExtResource("3_7dnwn")]
+position = Vector2(-797, 159)
+
+[node name="DarkPlayer" parent="." instance=ExtResource("3_7dnwn")]
+position = Vector2(0, 2000)
+
+[node name="LightParallax" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains5" type="Sprite2D" parent="LightParallax/ParallaxLayer5"]
+position = Vector2(961, 549)
+scale = Vector2(6, 6)
+texture = ExtResource("4_rgt4f")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains0" type="Sprite2D" parent="LightParallax/ParallaxLayer"]
+position = Vector2(962, 542)
+scale = Vector2(6, 6)
+texture = ExtResource("5_hkpdm")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.125, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains3" type="Sprite2D" parent="LightParallax/ParallaxLayer3"]
+position = Vector2(944, 554)
+scale = Vector2(6, 6)
+texture = ExtResource("6_wepqw")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.25, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains2" type="Sprite2D" parent="LightParallax/ParallaxLayer2"]
+position = Vector2(901, 522)
+scale = Vector2(6, 6)
+texture = ExtResource("7_qbl3j")
+
+[node name="Light Dimension" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Light Dimension"]
+texture_filter = 1
+scale = Vector2(3, 3)
+tile_set = ExtResource("8_16y48")
+format = 2
+layer_0/name = "Main"
+layer_0/tile_data = PackedInt32Array(655338, 720897, 0, 589827, 655361, 0, 720874, 458753, 1, 720875, 458753, 1, 720876, 458753, 1, 720877, 458753, 1, 720878, 458753, 1, 720879, 458753, 1, 720880, 458753, 1, 720881, 458753, 1, 720882, 458753, 1, 720883, 458753, 1, 720884, 458753, 1, 720885, 458753, 1, 720886, 458753, 1, 720887, 458753, 1, 720888, 458753, 1, 720889, 458753, 1, 720890, 458753, 1, 720891, 458753, 1, 720892, 458753, 1, 720893, 458753, 1, 720894, 458753, 1, 720895, 458753, 1, 655360, 458753, 1, 655361, 458753, 1, 655362, 458753, 1, 655363, 458753, 1, 655339, 393217, 0, 655340, 393217, 0, 655341, 393217, 0, 655342, 393217, 0, 655343, 393217, 0, 655344, 393217, 0, 655345, 393217, 0, 655346, 393217, 0, 655347, 393217, 0, 655348, 393217, 0, 655349, 393217, 0, 655350, 393217, 0, 655351, 393217, 0, 655352, 393217, 0, 655353, 393217, 0, 655354, 393217, 0, 655355, 393217, 0, 655356, 393217, 0, 655357, 393217, 0, 655358, 393217, 0, 655359, 393217, 0, 589824, 393217, 0, 589825, 393217, 0, 589826, 393217, 0, 65514, 458753, 0, 131050, 458753, 0, 196586, 458753, 0, 262122, 458753, 0, 327658, 458753, 0, 393194, 458753, 0, 458730, 458753, 0, 524266, 458753, 0, 589802, 458753, 0, 3, 393217, 1, 65539, 393217, 1, 131075, 393217, 1, 196611, 393217, 1, 262147, 393217, 1, 327683, 393217, 1, 393219, 393217, 1, 458755, 393217, 1, 524291, 393217, 1, 4, 458753, 0, 65540, 458753, 0, 131076, 458753, 0, 196612, 458753, 0, 262148, 458753, 0, 327684, 458753, 0, 393220, 458753, 0, 458756, 458753, 0, 524292, 458753, 0, 589828, 458753, 0, 65513, 393217, 1, 131049, 393217, 1, 196585, 393217, 1, 262121, 393217, 1, 327657, 393217, 1, 393193, 393217, 1, 458729, 393217, 1, 524265, 393217, 1, 589801, 393217, 1, 655337, 393217, 1, 720873, 524289, 1, 655364, 589825, 1, -65532, 589825, 0, -65533, 524289, 0, -23, 524289, 0, -22, 589825, 0)
+layer_1/name = "Toggle 1"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Toggle 2"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Toggle 3"
+layer_3/enabled = false
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 0
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Toggle 4"
+layer_4/enabled = false
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array()
+
+[node name="Death Zone" parent="Light Dimension" instance=ExtResource("10_j6gtr")]
+position = Vector2(513, 886)
+scale = Vector2(400, 1)
+
+[node name="Label" type="Label" parent="Light Dimension"]
+offset_left = -725.0
+offset_top = 26.0
+offset_right = -133.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 11
+text = "Congratulations! you won the game"
+label_settings = SubResource("LabelSettings_rq753")
+
+[node name="Portal" parent="Light Dimension" instance=ExtResource("11_ol65s")]
+position = Vector2(3181, 1946)
+
+[node name="DarkParallax" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains5" type="Sprite2D" parent="DarkParallax/ParallaxLayer5"]
+position = Vector2(961, 549)
+scale = Vector2(6, 6)
+texture = ExtResource("13_qwels")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains0" type="Sprite2D" parent="DarkParallax/ParallaxLayer"]
+position = Vector2(962, 542)
+scale = Vector2(6, 6)
+texture = ExtResource("14_7om37")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.125, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains3" type="Sprite2D" parent="DarkParallax/ParallaxLayer3"]
+position = Vector2(944, 554)
+scale = Vector2(6, 6)
+texture = ExtResource("15_dhiew")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.25, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains2" type="Sprite2D" parent="DarkParallax/ParallaxLayer2"]
+position = Vector2(901, 522)
+scale = Vector2(6, 6)
+texture = ExtResource("16_nwl63")
+
+[node name="Dark Dimension" type="Node2D" parent="."]
+position = Vector2(0, 2000)
+
+[node name="Monsters" type="Node2D" parent="Dark Dimension"]
+
+[node name="Death Zone" parent="Dark Dimension" instance=ExtResource("10_j6gtr")]
+position = Vector2(513, 886)
+scale = Vector2(400, 1)
+
+[node name="Label" type="Label" parent="Dark Dimension"]
+offset_left = -298.0
+offset_top = -136.0
+offset_right = 294.0
+offset_bottom = -41.0
+theme_override_font_sizes/font_size = 11
+text = "Congratulations! you won the game"
+label_settings = SubResource("LabelSettings_rq753")
+
+[node name="TileMap" type="TileMap" parent="Dark Dimension"]
+texture_filter = 1
+scale = Vector2(3, 3)
+tile_set = ExtResource("8_16y48")
+format = 2
+layer_0/name = "Main"
+layer_0/tile_data = PackedInt32Array(393206, 327681, 0, 327690, 262145, 0, 393226, 65537, 1, 393225, 65537, 1, 393224, 65537, 1, 393223, 65537, 1, 393222, 65537, 1, 393221, 65537, 1, 393220, 65537, 1, 393219, 65537, 1, 393218, 65537, 1, 393217, 65537, 1, 393216, 65537, 1, 458751, 65537, 1, 458750, 65537, 1, 458749, 65537, 1, 458748, 65537, 1, 458747, 65537, 1, 458746, 65537, 1, 458745, 65537, 1, 458744, 65537, 1, 458743, 65537, 1, 458742, 65537, 1, 327670, 65537, 0, 262134, 65537, 0, 196598, 65537, 0, 131062, 65537, 0, 65526, 65537, 0, -10, 65537, 0, -65546, 65537, 0, -131082, 65537, 0, 262154, 1, 1, 196618, 1, 1, 131082, 1, 1, 65546, 1, 1, 10, 1, 1, -65526, 1, 1, -131062, 1, 1, -196598, 1, 1, 393205, 1, 1, 327669, 1, 1, 262133, 1, 1, 196597, 1, 1, 131061, 1, 1, 65525, 1, 1, -11, 1, 1, -65547, 1, 1, -131083, 1, 1, 327691, 65537, 0, 262155, 65537, 0, 196619, 65537, 0, 131083, 65537, 0, 65547, 65537, 0, 11, 65537, 0, -65525, 65537, 0, -131061, 65537, 0, -196597, 65537, 0, 393227, 196609, 1, 458741, 131073, 1, -196619, 131073, 0, -196618, 196609, 0, -262134, 131073, 0, -262133, 196609, 0, 393207, 1, 0, 393208, 1, 0, 393209, 1, 0, 393210, 1, 0, 393211, 1, 0, 393212, 1, 0, 393213, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0)
+layer_1/name = "Toggle 1"
+layer_1/enabled = false
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Toggle 2"
+layer_2/enabled = false
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Toggle 3"
+layer_3/enabled = false
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 0
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Toggle 4"
+layer_4/enabled = false
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array()
+
+[node name="Portal" parent="Dark Dimension" instance=ExtResource("11_ol65s")]
+position = Vector2(1430, -1998)

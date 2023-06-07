@@ -12,8 +12,10 @@ var state_timer = 0.0
 func _ready():
 	if self.get_parent().get_parent().name == "Light Dimension":
 		selfDim = 'Light'
-		
-	self.player = get_node("../../Player")
+#	print("../../../"+selfDim+"Player")
+	player = get_node("../../../"+selfDim+"Player")
+	
+	
 
 func switch_to(new_state):
 	curstate = new_state

@@ -1,17 +1,70 @@
-[gd_scene load_steps=10 format=3 uid="uid://dggjwehttrd4"]
+[gd_scene load_steps=18 format=3 uid="uid://dggjwehttrd4"]
 
 [ext_resource type="Texture2D" uid="uid://b6oidybjk5lot" path="res://Assets/portal_particle.png" id="1_dfqit"]
-[ext_resource type="Texture2D" uid="uid://d2sxwcqmuugni" path="res://Assets/portal.png" id="1_sxfhq"]
+[ext_resource type="Texture2D" uid="uid://cs4bn2eegush5" path="res://Assets/portal_sprite_sheet.png" id="1_sdj5c"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kar6a"]
-atlas = ExtResource("1_sxfhq")
-region = Rect2(0, 0, 64, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xdr85"]
+radius = 20.0
+height = 90.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rstgg"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxj3c"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kenq5"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8if24"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5php4"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v76oy"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6khs"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgty3"]
+atlas = ExtResource("1_sdj5c")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3kw4y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kar6a")
+"texture": SubResource("AtlasTexture_rstgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxj3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kenq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8if24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5php4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v76oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6khs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgty3")
 }],
 "loop": true,
 "name": &"default",
@@ -20,13 +73,13 @@ animations = [{
 
 [sub_resource type="Gradient" id="Gradient_1j65o"]
 offsets = PackedFloat32Array(0, 0.511111, 1)
-colors = PackedColorArray(0.879706, 0.931385, 0.956389, 1, 0.872877, 0.910983, 0.976425, 1, 0.80907, 0.897273, 0.957714, 1)
+colors = PackedColorArray(0.879706, 0.931385, 0.956389, 1, 0.813697, 0.927994, 1, 1, 1, 0.854743, 0.693405, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fmwqp"]
 gradient = SubResource("Gradient_1j65o")
 
 [sub_resource type="Curve" id="Curve_46upm"]
-_data = [Vector2(0.0060241, 0.145455), 0.0, 1.10667, 0, 0, Vector2(0.457831, 0.9), -0.0443853, 0.660227, 0, 0, Vector2(1, 0.0272727), -2.45228, 0.0, 0, 0]
+_data = [Vector2(0.0060241, 0.145455), 0.0, 1.10667, 0, 0, Vector2(0.210843, 0.772727), -0.0443853, 0.660227, 0, 0, Vector2(0.771084, 0), -2.45228, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_51eol"]
@@ -40,6 +93,8 @@ spread = 180.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = -25.0
 initial_velocity_max = 25.0
+angular_velocity_min = -166.74
+angular_velocity_max = 151.58
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 linear_accel_min = -40.0
@@ -49,19 +104,25 @@ angle_max = 10.0
 scale_min = 0.5
 scale_max = 0.6
 scale_curve = SubResource("CurveTexture_51eol")
-color = Color(0.92549, 0.960784, 1, 1)
+color = Color(0.85098, 1, 0.905882, 1)
 color_ramp = SubResource("GradientTexture1D_fmwqp")
 sub_emitter_keep_velocity = true
 attractor_interaction_enabled = false
 
 [node name="Portal" type="Area2D"]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 5)
+shape = SubResource("CapsuleShape2D_xdr85")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3kw4y")
+frame_progress = 0.0481338
 
 [node name="Portal Particles" type="GPUParticles2D" parent="."]
+texture_filter = 2
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_3g2mu")
 texture = ExtResource("1_dfqit")

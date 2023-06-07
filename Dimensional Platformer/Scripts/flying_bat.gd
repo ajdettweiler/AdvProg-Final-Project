@@ -13,25 +13,13 @@ const DEATH_STATES = [State.DYING, State.DEAD, State.FALLING]
 var mouse_over = false
 
 func _ready():
-	super()
-	if selfDim == "Light": # set collision layers and masks
-		self.set_collision_layer_value(1, true)
-		self.set_collision_mask_value(1, true)
-		self.set_collision_layer_value(2, false)
-		self.set_collision_mask_value(2, false)
-	else:
-		self.set_collision_layer_value(1, false)
-		self.set_collision_mask_value(1, false)
-		self.set_collision_layer_value(2, true)
-		self.set_collision_mask_value(2, true)
+	super._ready()
 
 func _physics_process(delta):
 	state_timer += delta
 	if state_timer > 3.0 and curstate == State.DEAD: # if time has passed and the bat is dead
 		self.queue_free() # destroy node
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = self.player.position.x - self.position.x
+	direction = player.position.x - self.position.x
 	velocity = Vector2.ZERO
 	
 	if curstate == State.FALLING:
@@ -42,8 +30,8 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("click") and mouse_over: # if player clicks and the bat is being clicked
 		hit() # take damage
-	if Input.is_action_just_pressed("interact"):
-		shoot_projectile()
+#	if Input.is_action_just_pressed("interact"): # for debug right now
+#		shoot_projectile()
 	
 	if abs(direction) < SIGHT_DIST and curstate not in DEATH_STATES: # the bat can see the player
 		if curstate == State.IDLE:
@@ -110,3 +98,8 @@ func _on_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	mouse_over = false
+
+
+func _on_area_2d_body_entered(body):
+	if body == player:
+		player.hit()

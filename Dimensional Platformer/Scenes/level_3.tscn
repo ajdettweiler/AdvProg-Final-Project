@@ -1,0 +1,252 @@
+[gd_scene load_steps=20 format=3 uid="uid://coycnr3me88py"]
+
+[ext_resource type="Script" path="res://Scripts/scene_controls.gd" id="1_cqw6o"]
+[ext_resource type="Script" path="res://Scripts/camera_follow.gd" id="2_ninyy"]
+[ext_resource type="PackedScene" uid="uid://cak1nalcv3y7j" path="res://Scenes/player.tscn" id="3_gc0pb"]
+[ext_resource type="Texture2D" uid="uid://enx8crrpubmf" path="res://Assets/mountains_5.png" id="4_tt8xq"]
+[ext_resource type="Texture2D" uid="uid://ckaae7upx0o1m" path="res://Assets/mountains_4.png" id="5_bb8fc"]
+[ext_resource type="Texture2D" uid="uid://bujsugjiwiiea" path="res://Assets/mountains_3.png" id="6_srfp1"]
+[ext_resource type="Texture2D" uid="uid://d2xwxk2g8r6ib" path="res://Assets/mountains_2.png" id="7_os5f0"]
+[ext_resource type="TileSet" uid="uid://ds6er3ovw63ie" path="res://Assets/main_tileset.tres" id="8_ny5cx"]
+[ext_resource type="PackedScene" uid="uid://b1hc4k6u38r8e" path="res://Scenes/flying_bat.tscn" id="9_tlte7"]
+[ext_resource type="PackedScene" uid="uid://b20g7tt8dkqrn" path="res://Scenes/death_zone.tscn" id="10_deu2r"]
+[ext_resource type="PackedScene" uid="uid://dggjwehttrd4" path="res://Scenes/portal.tscn" id="11_23guk"]
+[ext_resource type="PackedScene" uid="uid://o6s3ut4j53f3" path="res://Scenes/dark_button.tscn" id="12_4g40n"]
+[ext_resource type="FontFile" uid="uid://vwo27r8yxaxe" path="res://Assets/PublicPixel-z84yD.ttf" id="13_ivgqp"]
+[ext_resource type="Texture2D" uid="uid://cwenqwgxcr3ia" path="res://Assets/caves_7.png" id="14_sjiwi"]
+[ext_resource type="Texture2D" uid="uid://bjdfmame7hby" path="res://Assets/caves_6.png" id="15_5qk06"]
+[ext_resource type="Texture2D" uid="uid://de58iho4yx070" path="res://Assets/caves_5.png" id="16_sicn0"]
+[ext_resource type="Texture2D" uid="uid://dmob8l05vf3he" path="res://Assets/caves_4.png" id="17_ysas5"]
+[ext_resource type="PackedScene" uid="uid://kl7ax6eo2ryk" path="res://Scenes/light_button.tscn" id="18_mbee3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq753"]
+font = ExtResource("13_ivgqp")
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_cqw6o")
+cur_scene_path = "res://Scenes/level_3.tscn"
+start_light_dim = true
+next_scene_path = "res://Scenes/celebration.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("2_ninyy")
+
+[node name="LightPlayer" parent="." instance=ExtResource("3_gc0pb")]
+position = Vector2(-797, 159)
+
+[node name="DarkPlayer" parent="." instance=ExtResource("3_gc0pb")]
+position = Vector2(0, 2000)
+
+[node name="LightParallax" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains5" type="Sprite2D" parent="LightParallax/ParallaxLayer5"]
+position = Vector2(961, 549)
+scale = Vector2(6, 6)
+texture = ExtResource("4_tt8xq")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains0" type="Sprite2D" parent="LightParallax/ParallaxLayer"]
+position = Vector2(962, 542)
+scale = Vector2(6, 6)
+texture = ExtResource("5_bb8fc")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.125, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains3" type="Sprite2D" parent="LightParallax/ParallaxLayer3"]
+position = Vector2(944, 554)
+scale = Vector2(6, 6)
+texture = ExtResource("6_srfp1")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="LightParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.25, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains2" type="Sprite2D" parent="LightParallax/ParallaxLayer2"]
+position = Vector2(901, 522)
+scale = Vector2(6, 6)
+texture = ExtResource("7_os5f0")
+
+[node name="Light Dimension" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Light Dimension"]
+texture_filter = 1
+scale = Vector2(3, 3)
+tile_set = ExtResource("8_ny5cx")
+format = 2
+layer_0/name = "Main"
+layer_0/tile_data = PackedInt32Array(327694, 655361, 0, 393230, 655361, 1, 327695, 720897, 0, 393231, 720897, 1, 262159, 458753, 0, 196623, 458753, 0, 131087, 458753, 0, 65551, 458753, 0, 262158, 393217, 1, 196622, 393217, 1, 131086, 393217, 1, 65550, 393217, 1, 15, 458753, 0, 14, 393217, 1, 458767, 458753, 0, 524303, 458753, 0, 589839, 458753, 0, 655375, 458753, 0, 720911, 458753, 0, 786447, 720897, 0, 458766, 393217, 1, 524302, 393217, 1, 589838, 393217, 1, 655374, 393217, 1, 720910, 393217, 1, 786446, 655361, 0, 851982, 458753, 1, 851983, 458753, 1, 851984, 458753, 1, 851985, 458753, 1, 851986, 458753, 1, 851987, 458753, 1, 851988, 458753, 1, 851989, 458753, 1, 851990, 458753, 1, 851991, 458753, 1, 851992, 458753, 1, 851981, 458753, 1, 851980, 458753, 1, 851979, 458753, 1, 851978, 458753, 1, 851977, 458753, 1, 851976, 458753, 1, 851975, 458753, 1, 851974, 458753, 1, 851973, 458753, 1, 851972, 458753, 1, 851971, 458753, 1, 851970, 458753, 1, 393229, 458753, 1, 393228, 458753, 1, 393227, 458753, 1, 393226, 458753, 1, 393225, 458753, 1, 393224, 458753, 1, 393223, 458753, 1, 393232, 458753, 1, 393233, 458753, 1, 393234, 458753, 1, 393235, 458753, 1, 393236, 458753, 1, 393237, 458753, 1, 393238, 458753, 1, 327693, 393217, 0, 327692, 393217, 0, 327691, 393217, 0, 327690, 393217, 0, 327689, 393217, 0, 327688, 393217, 0, 327687, 393217, 0, 327696, 393217, 0, 327697, 393217, 0, 327698, 393217, 0, 327699, 393217, 0, 327700, 393217, 0, 327701, 393217, 0, 327702, 393217, 0, -65522, 524289, 0, -65521, 589825, 0, 786445, 393217, 0, 786444, 393217, 0, 786443, 393217, 0, 786442, 393217, 0, 786441, 393217, 0, 786440, 393217, 0, 786439, 393217, 0, 786438, 393217, 0, 786437, 393217, 0, 786436, 393217, 0, 786435, 393217, 0, 786434, 393217, 0, 786448, 393217, 0, 786449, 393217, 0, 786450, 393217, 0, 786451, 393217, 0, 786452, 393217, 0, 786453, 393217, 0, 786454, 393217, 0, 786455, 393217, 0, 786456, 393217, 0, 393194, 458753, 1, 393195, 458753, 1, 393196, 458753, 1, 393197, 458753, 1, 393198, 458753, 1, 393199, 458753, 1, 393200, 458753, 1, 393201, 458753, 1, 393202, 458753, 1, 393203, 458753, 1, 393204, 458753, 1, 393205, 458753, 1, 393206, 458753, 1, 393207, 458753, 1, 524282, 458753, 1, 524283, 458753, 1, 524284, 458753, 1, 720895, 458753, 1, 655360, 458753, 1, 655361, 458753, 1, 655362, 458753, 1, 589826, 393217, 0, 589825, 393217, 0, 589824, 393217, 0, 655359, 393217, 0, 458748, 393217, 0, 458747, 393217, 0, 458746, 393217, 0, 327671, 393217, 0, 327670, 393217, 0, 327669, 393217, 0, 327668, 393217, 0, 327667, 393217, 0, 327666, 393217, 0, 327665, 393217, 0, 327664, 393217, 0, 327663, 393217, 0, 327662, 393217, 0, 327661, 393217, 0, 327660, 393217, 0, 327659, 393217, 0, 327658, 393217, 0, 327657, 524289, 0, 393193, 524289, 1, 458745, 524289, 0, 524281, 524289, 1, 655358, 524289, 0, 720894, 524289, 1, 786433, 524289, 0, 851969, 524289, 1, 327686, 524289, 0, 393222, 524289, 1, 786457, 589825, 0, 851993, 589825, 1, 327703, 589825, 0, 393239, 589825, 1, 327672, 589825, 0, 393208, 589825, 1, 458749, 589825, 0, 524285, 589825, 1, 589827, 589825, 0, 655363, 589825, 1, 11, 589825, 0, 65547, 589825, 1, 8, 524289, 0, 65544, 524289, 1, 9, 393217, 0, 10, 393217, 0, 65545, 458753, 1, 65546, 458753, 1, 196635, 458753, 1, 196636, 458753, 1, 196637, 458753, 1, 196638, 458753, 1, 196639, 458753, 1, 655387, 458753, 1, 655388, 458753, 1, 655389, 458753, 1, 655390, 458753, 1, 655391, 458753, 1, 655392, 458753, 1, 655405, 458753, 1, 655406, 458753, 1, 655407, 458753, 1, 655408, 458753, 1, 655409, 458753, 1, 655410, 458753, 1, 655411, 458753, 1, 655412, 458753, 1, 655413, 458753, 1, 655414, 458753, 1, 655415, 458753, 1, 655416, 458753, 1, 655417, 458753, 1, 655418, 458753, 1, 655419, 458753, 1, 655420, 458753, 1, 655421, 458753, 1, 655422, 458753, 1, 655423, 458753, 1, 655424, 458753, 1, 655425, 458753, 1, 655426, 458753, 1, 655427, 458753, 1, 655428, 458753, 1, 655429, 458753, 1, 655430, 458753, 1, 655431, 458753, 1, 655432, 458753, 1, 655433, 458753, 1, 655434, 458753, 1, 655435, 458753, 1, 458804, 458753, 1, 458805, 458753, 1, 458806, 458753, 1, 327738, 458753, 1, 327739, 458753, 1, 327740, 458753, 1, 458817, 458753, 1, 458818, 458753, 1, 458819, 458753, 1, 589851, 393217, 0, 589852, 393217, 0, 589853, 393217, 0, 589854, 393217, 0, 589855, 393217, 0, 589856, 393217, 0, 131099, 393217, 0, 131100, 393217, 0, 131101, 393217, 0, 131102, 393217, 0, 131103, 393217, 0, 589869, 393217, 0, 589870, 393217, 0, 589871, 393217, 0, 589872, 393217, 0, 589873, 393217, 0, 589874, 393217, 0, 589875, 393217, 0, 589876, 393217, 0, 589877, 393217, 0, 589878, 393217, 0, 589879, 393217, 0, 589880, 393217, 0, 589881, 393217, 0, 589882, 393217, 0, 589883, 393217, 0, 589884, 393217, 0, 589885, 393217, 0, 589886, 393217, 0, 589887, 393217, 0, 589888, 393217, 0, 589889, 393217, 0, 589890, 393217, 0, 589891, 393217, 0, 589892, 393217, 0, 589893, 393217, 0, 589894, 393217, 0, 589895, 393217, 0, 589896, 393217, 0, 589897, 393217, 0, 589898, 393217, 0, 589899, 393217, 0, 393281, 393217, 0, 393282, 393217, 0, 393283, 393217, 0, 262204, 393217, 0, 262203, 393217, 0, 262202, 393217, 0, 393270, 393217, 0, 393269, 393217, 0, 393268, 393217, 0, 393280, 524289, 0, 458816, 524289, 1, 262201, 524289, 0, 327737, 524289, 1, 393267, 524289, 0, 458803, 524289, 1, 589868, 524289, 0, 655404, 524289, 1, 589850, 524289, 0, 655386, 524289, 1, 131098, 524289, 0, 196634, 524289, 1, 589857, 589825, 0, 655393, 589825, 1, 131104, 589825, 0, 196640, 589825, 1, 393271, 589825, 0, 458807, 589825, 1, 262205, 589825, 0, 327741, 589825, 1, 393284, 589825, 0, 458820, 589825, 1, 589900, 589825, 0, 655436, 589825, 1, 524323, 458753, 1, 524324, 458753, 1, 524325, 458753, 1, 524326, 458753, 1, 524327, 458753, 1, 524328, 458753, 1, 524329, 458753, 1, 524330, 458753, 1, 458794, 393217, 0, 458793, 393217, 0, 458792, 393217, 0, 458791, 393217, 0, 458790, 393217, 0, 458789, 393217, 0, 458788, 393217, 0, 458787, 393217, 0, 458786, 524289, 0, 524322, 524289, 1, 458795, 589825, 0, 524331, 589825, 1)
+layer_1/name = "Toggle 1"
+layer_1/enabled = false
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(393219, 458753, 1, 393218, 458753, 1, 393217, 458753, 1, 327683, 393217, 0, 327682, 393217, 0, 327681, 393217, 0, 327680, 524289, 0, 393216, 524289, 1, 327684, 589825, 0, 393220, 589825, 1, 196619, 393217, 0, 196620, 393217, 0, 262156, 458753, 1, 262155, 458753, 1, 262154, 458753, 1, 196618, 393217, 0, 196617, 524289, 0, 262153, 524289, 1, 196621, 589825, 0, 262157, 589825, 1)
+layer_2/name = "Toggle 2"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array(589870, 655361, 0, 589871, 720897, 0, 524335, 458753, 0, 458799, 458753, 0, 393263, 458753, 0, 327727, 458753, 0, 262191, 458753, 0, 196655, 458753, 0, 131119, 458753, 0, 65583, 458753, 0, 524334, 393217, 1, 458798, 393217, 1, 393262, 393217, 1, 327726, 393217, 1, 262190, 393217, 1, 196654, 393217, 1, 131118, 393217, 1, 65582, 393217, 1, 46, 524289, 0, 47, 589825, 0)
+layer_3/name = "Toggle 3"
+layer_3/enabled = false
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 0
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Toggle 4"
+layer_4/enabled = false
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array()
+
+[node name="Monsters" type="Node2D" parent="Light Dimension"]
+
+[node name="Flying Bat" parent="Light Dimension/Monsters" instance=ExtResource("9_tlte7")]
+position = Vector2(2885, 403)
+
+[node name="Death Zone" parent="Light Dimension" instance=ExtResource("10_deu2r")]
+position = Vector2(513, 886)
+scale = Vector2(400, 1)
+
+[node name="Portal" parent="Light Dimension" instance=ExtResource("11_23guk")]
+position = Vector2(3498, 414)
+
+[node name="Button" parent="Light Dimension" instance=ExtResource("12_4g40n")]
+position = Vector2(440, 565)
+one_time = false
+dest_dim = "Dark"
+
+[node name="Button2" parent="Light Dimension" instance=ExtResource("12_4g40n")]
+position = Vector2(851, 578)
+toggle_layer = 2
+dest_dim = "Dark"
+
+[node name="DarkParallax" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains5" type="Sprite2D" parent="DarkParallax/ParallaxLayer5"]
+position = Vector2(961, 549)
+scale = Vector2(6, 6)
+texture = ExtResource("14_sjiwi")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains0" type="Sprite2D" parent="DarkParallax/ParallaxLayer"]
+position = Vector2(962, 542)
+scale = Vector2(6, 6)
+texture = ExtResource("15_5qk06")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.125, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains3" type="Sprite2D" parent="DarkParallax/ParallaxLayer3"]
+position = Vector2(944, 554)
+scale = Vector2(6, 6)
+texture = ExtResource("16_sicn0")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="DarkParallax"]
+texture_filter = 1
+motion_scale = Vector2(0.25, 0)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Mountains2" type="Sprite2D" parent="DarkParallax/ParallaxLayer2"]
+position = Vector2(901, 522)
+scale = Vector2(6, 6)
+texture = ExtResource("17_ysas5")
+
+[node name="Dark Dimension" type="Node2D" parent="."]
+position = Vector2(0, 2000)
+
+[node name="Monsters" type="Node2D" parent="Dark Dimension"]
+
+[node name="Death Zone" parent="Dark Dimension" instance=ExtResource("10_deu2r")]
+position = Vector2(513, 886)
+scale = Vector2(400, 1)
+
+[node name="Label" type="Label" parent="Dark Dimension"]
+offset_left = -210.0
+offset_top = -117.0
+offset_right = 382.0
+offset_bottom = -22.0
+theme_override_font_sizes/font_size = 11
+text = "Final Level! 
+This one you have to figure out yourself..."
+label_settings = SubResource("LabelSettings_rq753")
+
+[node name="TileMap" type="TileMap" parent="Dark Dimension"]
+texture_filter = 1
+scale = Vector2(3, 3)
+tile_set = ExtResource("8_ny5cx")
+format = 2
+layer_0/name = "Main"
+layer_0/y_sort_origin = 10
+layer_0/tile_data = PackedInt32Array(196607, 65537, 1, 131072, 65537, 1, 131073, 65537, 1, 131074, 65537, 1, 131075, 65537, 1, 131076, 65537, 1, 131077, 65537, 1, 196606, 65537, 1, 196605, 65537, 1, 786439, 65537, 1, 786443, 65537, 1, 786444, 65537, 1, 720909, 65537, 1, 720910, 65537, 1, 720911, 65537, 1, 720912, 65537, 1, 720913, 65537, 1, 720914, 65537, 1, 720915, 65537, 1, 720916, 65537, 1, 786440, 65537, 1, 786441, 65537, 1, 786442, 65537, 1, 720908, 1, 0, 720907, 1, 0, 720906, 1, 0, 720905, 1, 0, 720904, 1, 0, 720903, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 196609, 0, 720917, 196609, 1, 720902, 131073, 0, 786438, 131073, 1, 327709, 65537, 1, 327710, 65537, 1, 327711, 65537, 1, 327712, 65537, 1, 327713, 65537, 1, 327714, 65537, 1, 327715, 65537, 1, 327716, 65537, 1, 327717, 65537, 1, 327718, 65537, 1, 589847, 65537, 1, 589848, 65537, 1, 589849, 65537, 1, 589850, 65537, 1, 589851, 65537, 1, 589852, 65537, 1, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 196609, 0, 589853, 196609, 1, 524310, 131073, 0, 589846, 131073, 1, 262173, 1, 0, 262174, 1, 0, 262175, 1, 0, 262176, 1, 0, 262177, 1, 0, 262178, 1, 0, 262179, 1, 0, 262180, 1, 0, 262181, 1, 0, 262182, 1, 0, 262172, 131073, 0, 327708, 131073, 1, 262183, 196609, 0, 327719, 196609, 1, 196651, 65537, 1, 196652, 65537, 1, 196653, 65537, 1, 196654, 65537, 1, 196655, 65537, 1, 196656, 65537, 1, 196657, 65537, 1, 196658, 65537, 1, 196659, 65537, 1, 196660, 65537, 1, -65479, 65537, 1, -65478, 65537, 1, -65477, 65537, 1, -65476, 65537, 1, -65475, 65537, 1, -65474, 65537, 1, -65473, 65537, 1, -262078, 65537, 1, -262077, 65537, 1, -262076, 65537, 1, -327608, 65537, 1, -327607, 65537, 1, -327606, 65537, 1, 65611, 65537, 1, 65612, 65537, 1, 65613, 65537, 1, 65614, 65537, 1, 65615, 65537, 1, 65616, 65537, 1, 65617, 65537, 1, 65618, 65537, 1, 65619, 65537, 1, -65450, 65537, 1, -65449, 65537, 1, -65448, 65537, 1, -65447, 65537, 1, -65446, 65537, 1, -65445, 65537, 1, -65444, 65537, 1, 65630, 65537, 1, 65631, 65537, 1, 65632, 65537, 1, 65633, 65537, 1, 65634, 65537, 1, 65635, 65537, 1, 65636, 65537, 1, 65637, 65537, 1, 65638, 65537, 1, 65639, 65537, 1, 65640, 65537, 1, 65641, 65537, 1, 65642, 65537, 1, 94, 1, 0, 95, 1, 0, 96, 1, 0, 97, 1, 0, 98, 1, 0, 99, 1, 0, 100, 1, 0, 101, 1, 0, 102, 1, 0, 103, 1, 0, 104, 1, 0, 105, 1, 0, 106, 1, 0, -130980, 1, 0, -130981, 1, 0, -130982, 1, 0, -130983, 1, 0, -130984, 1, 0, -130985, 1, 0, -130986, 1, 0, 83, 1, 0, 82, 1, 0, 81, 1, 0, 80, 1, 0, 79, 1, 0, 78, 1, 0, 77, 1, 0, 76, 1, 0, 75, 1, 0, -393144, 1, 0, -393143, 1, 0, -393142, 1, 0, -327612, 1, 0, -327613, 1, 0, -327614, 1, 0, -131009, 1, 0, -131010, 1, 0, -131011, 1, 0, -131012, 1, 0, -131013, 1, 0, -131014, 1, 0, -131015, 1, 0, 131124, 1, 0, 131123, 1, 0, 131122, 1, 0, 131121, 1, 0, 131120, 1, 0, 131119, 1, 0, 131118, 1, 0, 131117, 1, 0, 131116, 1, 0, 131115, 1, 0, 131114, 131073, 0, 196650, 131073, 1, -131016, 131073, 0, -65480, 131073, 1, -327615, 131073, 0, -262079, 131073, 1, -393145, 131073, 0, -327609, 131073, 1, 74, 131073, 0, 65610, 131073, 1, -130987, 131073, 0, -65451, 131073, 1, 93, 131073, 0, 65629, 131073, 1, 107, 196609, 0, 65643, 196609, 1, -130979, 196609, 0, -65443, 196609, 1, 84, 196609, 0, 65620, 196609, 1, -393141, 196609, 0, -327605, 196609, 1, -327611, 196609, 0, -262075, 196609, 1, -131008, 196609, 0, -65472, 196609, 1, 131125, 196609, 0, 196661, 196609, 1)
+layer_1/name = "Toggle 1"
+layer_1/enabled = false
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(327702, 131073, 0, 393238, 131073, 1, 393239, 65537, 1, 393240, 65537, 1, 393241, 65537, 1, 327705, 1, 0, 327704, 1, 0, 327703, 1, 0, 327706, 196609, 0, 393242, 196609, 1, 51, 65537, 1, 52, 65537, 1, 53, 65537, 1, -65485, 1, 0, -65484, 1, 0, -65483, 1, 0, -65486, 131073, 0, 50, 131073, 1, -65482, 196609, 0, 54, 196609, 1)
+layer_2/name = "Toggle 2"
+layer_2/enabled = false
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array(196676, 65537, 1, 196677, 65537, 1, 196678, 65537, 1, 196679, 65537, 1, 196680, 65537, 1, 131144, 1, 0, 131143, 1, 0, 131142, 1, 0, 131141, 1, 0, 131140, 1, 0, 131139, 131073, 0, 196675, 131073, 1, 131145, 196609, 0, 196681, 196609, 1)
+layer_3/name = "Toggle 3"
+layer_3/enabled = false
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 0
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Toggle 4"
+layer_4/enabled = false
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array()
+
+[node name="Portal" parent="Dark Dimension" instance=ExtResource("11_23guk")]
+position = Vector2(5006, -11)
+
+[node name="Button2" parent="Dark Dimension" instance=ExtResource("18_mbee3")]
+position = Vector2(1241, 398)
+one_time = false
+
+[node name="Button3" parent="Dark Dimension" instance=ExtResource("18_mbee3")]
+position = Vector2(3394, 105)
+toggle_layer = 2
+one_time = false

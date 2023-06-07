@@ -7,8 +7,13 @@ const SPEED = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	light_player = get_node("../Light Dimension").find_child("Player", true, false)
-	dark_player = get_node("../Dark Dimension").find_child("Player", true, false)
+	light_player = get_node("../LightPlayer")
+	dark_player = get_node("../DarkPlayer")
+	var player:Node2D
+	if Globals.is_light_dimension:
+		player = light_player
+	else:
+		player = dark_player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,3 +32,9 @@ func _process(delta):
 		move_dir = dir.normalized() * SPEED
 	
 	self.position = self.position + move_dir
+	
+func insta_move(x, y):
+	self.position_smoothing_enabled = false
+	self.position.x = x
+	self.position.y = y
+	self.position_smoothing_enabled = true
